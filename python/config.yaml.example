@@ -1,0 +1,7 @@
+hass:
+  url: "https://hass.example"
+  token: "..."
+  entities:
+   co: "input_boolean.carbon_monoxide_alarm"
+   fire: "input_boolean.fire_alarm"
+   fault: "input_boolean.aico_alarms_fault"

@@ -73,18 +73,22 @@ void setup() {
 }
 
 void loop() {
-	static unsigned long last = millis();
+	static unsigned long last = millis() - REPORT_INTERVAL_MS;
 	bool immediate = false;
 
-	for (Input& input : inputs) {
-		immediate |= input.loop();
-	}
-
-	if (immediate || millis() - last >= REPORT_INTERVAL_MS) {
+	if (SerialUSB) {
 		for (Input& input : inputs) {
-			input.print();
+			immediate |= input.loop();
 		}
-		SerialUSB.println();
-		last = millis();
+
+		if (immediate || millis() - last >= REPORT_INTERVAL_MS) {
+			for (Input& input : inputs) {
+				input.print();
+			}
+			SerialUSB.println();
+			last = millis();
+		}
+	} else {
+		last = millis() - REPORT_INTERVAL_MS;
 	}
 }

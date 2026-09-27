@@ -1,0 +1,6 @@
+debhelper-build-stamp
+files
+tmp/
+ei413-fire-panel/
+*.substvars
+*.log

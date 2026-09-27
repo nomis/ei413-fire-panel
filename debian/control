@@ -1,0 +1,12 @@
+Source: ei413-fire-panel
+Section: misc
+Priority: optional
+Maintainer: Simon Arlott <ubuntu@sa.me.uk>
+Build-Depends: debhelper (>= 12)
+Standards-Version: 4.1.4
+
+Package: ei413-fire-panel
+Architecture: amd64
+Depends: python3-minimal, python3-requests, python3-yaml, ${misc:Depends}, ${shlibs:Depends}
+Description: Ei413 Fire Panel utilities
+ Applications for handling Ei413 Fire Panel modules.

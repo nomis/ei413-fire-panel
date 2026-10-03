@@ -1,3 +1,9 @@
+ei413-fire-panel (2) jammy; urgency=medium
+
+  * Kill process on any exception
+
+ -- Simon Arlott <ubuntu@sa.me.uk>  Sat, 03 Oct 2026 12:12:23 +0100
+
 ei413-fire-panel (1-1) jammy; urgency=medium
 
   * Initial release.

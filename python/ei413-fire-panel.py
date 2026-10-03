@@ -74,12 +74,14 @@ def listener(q, s):
 		except Exception:
 			traceback.print_exc()
 
-if __name__ == "__main__":
+def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("device")
 	parser.add_argument("config")
 	parser.add_argument("port")
 	args = parser.parse_args()
+
+	signal.alarm(5)
 
 	queue1 = Queue()
 	queue2 = Queue()
@@ -127,7 +129,6 @@ if __name__ == "__main__":
 	termios.tcsetattr(fd, termios.TCSANOW, [iflag, oflag, cflag, lflag, ispeed, ospeed, cc])
 
 	last_line = None
-	signal.alarm(5)
 	while True:
 		line = os.read(fd, 1024).rstrip().decode("utf8", "replace")
 		if not line:
@@ -142,4 +143,9 @@ if __name__ == "__main__":
 			queue1.put(line)
 			queue2.put(line)
 			signal.alarm(5)
-	os.kill(0, 15)
+
+if __name__ == "__main__":
+	try:
+		main()
+	finally:
+		signal.alarm(1)
